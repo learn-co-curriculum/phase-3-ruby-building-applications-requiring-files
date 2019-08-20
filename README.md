@@ -105,14 +105,14 @@ p lawn.plants
 ```
 
 At the moment, if we try to run the file (`ruby lib/garden.rb`), we get an error
-regarding an **uninitialized constant Plant (NameError)**. In order for one file
-to have access to code written in another file, we need to tell Ruby to
-_require_ that other file.
+regarding an **uninitialized constant Plant (NameError)**. For one file to have
+access to code written in another file, we need to tell Ruby to _require_ that
+other file.
 
 ## Define `require_relative` and `require`
 
 By requiring a file, we are telling Ruby, 'go load the code exists in this file.'
-We have two ways to to tell Ruby to do this: `require_relative` and `require`.
+We have two ways to tell Ruby to do this: `require_relative` and `require`.
 
 #### `require_relative`
 
@@ -137,7 +137,7 @@ file requirements should be relative to each other.
 #### `require`
 
 [require][] accepts an _absolute file path_, meaning a file location
-relative to the _root_ directory. `require` will also accepts shortened names,
+relative to the _root_ directory. `require` will also accept shortened names,
 and checks if any matches are found in the directories located in your shell's
 [PATH variable][].
 
@@ -178,7 +178,7 @@ they are all required in the file that we run, they'll get loaded.
 ### Local Variables
 
 It is important to note that both `require` and `require_relative` will not
-load local variables - _only_ functions, modules and classes.
+load local variables - _only_ functions, modules, and classes.
 
 ## Conclusion
 
