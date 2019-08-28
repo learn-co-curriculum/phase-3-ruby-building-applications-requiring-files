@@ -22,15 +22,21 @@ typically have a `lib` folder and a `spec` folder and some files like
 ```
 
 As we expand our understanding of programming in Ruby and start to work with
-larger, more complex applications, we need to add a few more pieces to this. In
-an upcoming lesson, we'll take a closer look at the `Gemfile` and what that
-does. For this lesson, though, we're going to take a look at some other folders
-and file structures you'll see in Ruby labs going forward. First, we're going to
+larger, more complex applications, we'll start to see more pieces and components
+being added - run files, environment files, to start. Then, we'll start seeing
+things like database folders and before long, we'll see many files in many
+folders, all doing their small part for the application.
+
+With all these files separated out into different folders, how is it that they
+are able to work together? In this lesson, we're going to provide an answer to this question and take a deeper
 look at requiring files.
 
-If we define two classes in the same file, we can interact with both classes
-immediately after they are defined. Imagine if the following 'belongs-to' /
-'has-many' example between `Garden` and `Plant` classes:
+## Classes Defined in the Same File
+
+Let's take a look at a pair of example classes to get started. If we define two
+classes in the same file, we can interact with both classes immediately after
+they are defined. Imagine if the following 'belongs-to' / 'has-many' example
+between `Garden` and `Plant` classes:
 
 ```ruby
 class Garden
@@ -62,13 +68,13 @@ class Plant
   end
 end
 
-lawn = Garden.new(name: 'Front Lawn')
+lawn = Garden.new(name: 'Front Lawn') # we can call Plant.new because Garden is defined above
 
-basil = Plant.new(name: 'Basil')
+basil = Plant.new(name: 'Basil') # we can call Plant.new because Plant is defined above
 basil.garden = lawn
 
 cucumber = Plant.new(name: 'Cucumber')
-cucumber.garden = lawn
+cucumber.garden = lawn # we can associate a plant and a garden because both are defined above
 
 p lawn.plants
 # => [#<Plant:0x00007fa4440ab0c8 @name="Basil", @garden=#<Garden:0x00007fa4440997b0 @name="Front Lawn">>, #<Plant:0x00007fa4440b8bd8 @name="Cucumber", @garden=#<Garden:0x00007fa4440997b0 @name="Front Lawn">>]
@@ -82,11 +88,25 @@ classes have been defined in the file. Notice, too, that `Garden` includes a
 method, `plants`, that calls `Plant.all`. `Garden` _needs_ to know about the
 `Plant` class, and with the setup above, it does.
 
-If, however, we define these classes in separate files, they won't automatically
+## Classes Defined in Different Files
+
+If we define the example classes in separate files, they won't automatically
 know about each other or have access to one another. In the `lib` folder,
 `Plant` and `Garden` are separated into their own files, `plant.rb` and
-`garden.rb`. Below the `Garden` class, the same code from the previous example
-is written:
+`garden.rb`.
+
+```text
+├── lib
+│   └── example.rb
+│   └── garden.rb
+│   └── plant.rb
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+```
+
+In `lib/garden.rb`, below the `Garden` class, the same code from the previous
+example is written:
 
 ```ruby
 # lib/garden.rb
@@ -105,13 +125,13 @@ p lawn.plants
 ```
 
 At the moment, if we try to run the file (`ruby lib/garden.rb`), we get an error
-regarding an **uninitialized constant Plant (NameError)**. For one file to have
+regarding an `uninitialized constant Plant (NameError)`. For one file to have
 access to code written in another file, we need to tell Ruby to _require_ that
 other file.
 
 ## Define `require_relative` and `require`
 
-By requiring a file, we are telling Ruby, 'go load the code exists in this file.'
+By requiring a file, we are telling Ruby, 'go load the that code exists in this file.'
 We have two ways to tell Ruby to do this: `require_relative` and `require`.
 
 #### `require_relative`
