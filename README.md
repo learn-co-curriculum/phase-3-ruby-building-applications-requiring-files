@@ -80,8 +80,7 @@ p lawn.plants
 # => [#<Plant:0x00007fa4440ab0c8 @name="Basil", @garden=#<Garden:0x00007fa4440997b0 @name="Front Lawn">>, #<Plant:0x00007fa4440b8bd8 @name="Cucumber", @garden=#<Garden:0x00007fa4440997b0 @name="Front Lawn">>]
 ```
 
-> **Note**: This code is available in `lib/example.rb` and can be tested by
-running `ruby lib/example.rb`.
+> **Note**: This code is available in `lib/example.rb` and can be tested by running `ruby lib/example.rb`.
 
 In the above code, we can call both `Garden` and `Plant` at the end because both
 classes have been defined in the file. Notice, too, that `Garden` includes a
