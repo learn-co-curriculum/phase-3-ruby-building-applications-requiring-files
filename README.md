@@ -7,7 +7,7 @@
 
 ## Introduction
 
-So far, most of the labs we've seen have a similar file structure - they
+So far, most of the labs we've seen have a similar file structure &mdash; they
 typically have a `lib` folder and a `spec` folder and some files like
 `README.md`:
 
@@ -23,19 +23,19 @@ typically have a `lib` folder and a `spec` folder and some files like
 
 As we expand our understanding of programming in Ruby and start to work with
 larger, more complex applications, we'll start to see more pieces and components
-being added - run files, environment files, to start. Then, we'll start seeing
-things like database folders and before long, we'll see many files in many
-folders, all doing their small part for the application.
+being added &mdash; run files and environment files to start. Then, we'll start
+seeing things like database folders and before long, we'll see many files in
+many folders, all doing their small part for the application.
 
 With all these files separated out into different folders, how is it that they
-are able to work together? In this lesson, we're going to provide an answer to this question and take a deeper
-look at requiring files.
+are able to work together? In this lesson, we're going to provide an answer to
+this question and take a deeper look at requiring files.
 
 ## Classes Defined in the Same File
 
 Let's take a look at a pair of example classes to get started. If we define two
 classes in the same file, we can interact with both classes immediately after
-they are defined. Imagine if the following 'belongs-to' / 'has-many' example
+they are defined. Consider the following 'belongs-to' / 'has-many' association
 between `Garden` and `Plant` classes:
 
 ```ruby
@@ -68,7 +68,7 @@ class Plant
   end
 end
 
-lawn = Garden.new(name: 'Front Lawn') # we can call Plant.new because Garden is defined above
+lawn = Garden.new(name: 'Front Lawn') # we can call Garden.new because Garden is defined above
 
 basil = Plant.new(name: 'Basil') # we can call Plant.new because Plant is defined above
 basil.garden = lawn
@@ -111,7 +111,7 @@ example is written:
 ```ruby
 # lib/garden.rb
 
-# ...
+...
 
 lawn = Garden.new(name: 'Front Lawn')
 
@@ -131,14 +131,15 @@ other file.
 
 ## Define `require_relative` and `require`
 
-By requiring a file, we are telling Ruby, 'go load the that code exists in this file.'
-We have two ways to tell Ruby to do this: `require_relative` and `require`.
+By requiring a file, we are telling Ruby, 'go load the code that exists in this
+file.' We have two ways to tell Ruby to do this: `require_relative` and
+`require`.
 
 #### `require_relative`
 
-[require_relative][] accepts a _relative file path_ to the file
-we want to require. This means we're providing a file path that starts from the
-file in which the `require_relative` statement is called.
+[require_relative][] accepts a _relative file path_ to the file we want to
+require. This means we're providing a file path that starts from the file in
+which the `require_relative` statement is called.
 
 [require_relative]: https://apidock.com/ruby/Kernel/require_relative
 
@@ -156,10 +157,10 @@ file requirements should be relative to each other.
 
 #### `require`
 
-[require][] accepts an _absolute file path_, meaning a file location
-relative to the _root_ directory. `require` will also accept shortened names,
-and checks if any matches are found in the directories located in your shell's
-[PATH variable][].
+[require][] accepts an _absolute file path_, meaning a file location relative to
+the _root_ directory. `require` will also accept shortened names, and checks if
+any matches are found in the directories located in your shell's [PATH
+variable][].
 
 [require]: https://apidock.com/ruby/v2_5_5/Kernel/require
 [PATH variable]: http://www.linfo.org/path_env_var.html
@@ -187,18 +188,18 @@ require_relative './plant.rb'
 ```
 
 Here, we're indicating to Ruby that there is a file, `plant.rb` located in the
-same folder relative to the current file. With this added, if you try
-`ruby lib/garden.rb` again, you should see it print out the expected `Plant`
+same folder relative to the current file. With this added, if you try `ruby
+lib/garden.rb` again, you should see it print out the expected `Plant`
 instances.
 
-In this example, we only have two classes, but with `require_relative`, we
-can have as many classes as we want, each in a separate file. As long as
-they are all required in the file that we run, they'll get loaded.
+In this example, we only have two classes, but with `require_relative`, we can
+have as many classes as we want, each in a separate file. As long as they are
+all required in the file that we run, they'll get loaded.
 
 ### Local Variables
 
-It is important to note that both `require` and `require_relative` will not
-load local variables - _only_ functions, modules, and classes.
+It is important to note that both `require` and `require_relative` will not load
+local variables - _only_ functions, modules, and classes.
 
 ## Conclusion
 
