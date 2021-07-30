@@ -7,7 +7,7 @@
 
 ## Introduction
 
-So far, most of the labs we've seen have a similar file structure &mdash; they
+So far, most of the labs we've seen have a similar file structure — they
 typically have a `lib` folder and a `spec` folder and some files like
 `README.md`:
 
@@ -22,7 +22,7 @@ typically have a `lib` folder and a `spec` folder and some files like
 
 As we expand our understanding of programming in Ruby and start to work with
 larger, more complex applications, we'll start to see more pieces and components
-being added &mdash; run files and environment files, to start. Then, we'll start
+being added — run files and environment files, to start. Then, we'll start
 seeing things like database folders and before long, we'll see many files in
 many folders, all doing their small part for the application.
 
@@ -137,7 +137,7 @@ There are a few key distinctions:
 - Unlike with the `import` keyword in JavaScript, when you `require` a file, you
   don't specify any variables. Instead, you're essentially loading in _all_ the
   methods and class definitions defined in that file.
-- `require` and `require_relative` aren't keywords &mdash; they're actually both
+- `require` and `require_relative` aren't keywords — they're actually both
   _methods_ defined in Ruby's [Kernel module][require].
 
 ### `require_relative`
@@ -221,7 +221,7 @@ all required in the file that we run, they'll get loaded.
 ### Local Variables
 
 It is important to note that both `require` and `require_relative` will not load
-local variables &mdash; _only_ methods, modules, and classes.
+local variables — _only_ methods, modules, and classes.
 
 ## Conclusion
 
@@ -229,7 +229,7 @@ Ruby applications are often divided up among many files, and when an application
 runs, it typically needs a way to _load_ those various files so it has access to
 all the code.
 
-You've experienced this many times already &mdash; every time you work on a Ruby
+You've experienced this many times already — every time you work on a Ruby
 lab and run the tests, the files where you write your solution are being loaded
 into the files that are running the tests. This is done through a file called
 `spec_helper.rb`.
